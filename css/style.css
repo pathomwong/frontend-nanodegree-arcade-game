@@ -1,3 +1,9 @@
 body {
     text-align: center;
+    overflow: hidden;
 }
+
+/* #gameinfo{
+  position: absolute;
+  float: left;
+} */
