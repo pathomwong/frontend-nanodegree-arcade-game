@@ -44,6 +44,7 @@ Enemy.prototype.checkCollisions = function() {
        player.y > this.y - 55
     ){
       player.reset();
+      player.decreseLife();
     }
 };
 
@@ -75,6 +76,7 @@ class Player{
       this.goal = false;
       this.score = 0;
       this.level = 1;
+      this.life = 3;
   }
 
   update(){
@@ -94,9 +96,15 @@ class Player{
 
     //Life
     ctx.fillText("Life: ", 10, 110);
-    ctx.drawImage(Resources.get(this.heart), 55, 87, 20, 30);
-    ctx.drawImage(Resources.get(this.heart), 75, 87, 20, 30);
-    ctx.drawImage(Resources.get(this.heart), 95, 87, 20, 30);
+    if(this.life > 0){
+      ctx.drawImage(Resources.get(this.heart), 55, 87, 20, 30);
+    }
+    if(this.life > 1){
+      ctx.drawImage(Resources.get(this.heart), 75, 87, 20, 30);
+    }
+    if(this.life > 2){
+      ctx.drawImage(Resources.get(this.heart), 95, 87, 20, 30);
+    }
 
     //gem information
 
@@ -158,6 +166,10 @@ class Player{
   reset(){
     this.x = 0;
     this.y = 390;
+  }
+
+  decreseLife(){
+    this.life--;
   }
 }
 
