@@ -69,9 +69,12 @@ class Player{
 
   constructor(){
       this.sprite = 'images/char-boy.png';
+      this.heart = 'images/Heart.png';
       this.x = 0;
       this.y = 390;
       this.goal = false;
+      this.score = 0;
+      this.level = 1;
   }
 
   update(){
@@ -80,6 +83,30 @@ class Player{
 
   render(){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
+    //score
+    ctx.font = "bold 20px Arial";
+    ctx.fillStyle="#363333";
+    ctx.fillText("score: " + this.score, 400, 80);
+
+    //Level
+    ctx.fillText("Level: " + this.level, 10, 80);
+
+    //Life
+    ctx.fillText("Life: ", 10, 110);
+    ctx.drawImage(Resources.get(this.heart), 55, 87, 20, 30);
+    ctx.drawImage(Resources.get(this.heart), 75, 87, 20, 30);
+    ctx.drawImage(Resources.get(this.heart), 95, 87, 20, 30);
+
+    //gem information
+
+    ctx.drawImage(Resources.get("images/Gem Orange.png"), 330, 84, 20, 30);
+    ctx.fillText("10", 355, 110);
+    ctx.drawImage(Resources.get("images/Gem Green.png"), 390, 84, 20, 30);
+    ctx.fillText("20", 415, 110);
+    ctx.drawImage(Resources.get("images/Gem Blue.png"), 450, 84, 20, 30);
+    ctx.fillText("30", 475, 110);
+
     if(this.goal){
       ctx.font = "bolder 30px Arial";
       ctx.fillStyle="#FF0000";
