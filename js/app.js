@@ -120,6 +120,15 @@ class Player{
       ctx.fillStyle="#FF0000";
       ctx.fillText("You Got It, Try Again!", 100, 100);
     }
+
+    //Game over
+    if(this.life <= 0){
+      ctx.font = "bold 70px Arial";
+      ctx.fillStyle="#f70505";
+      ctx.fillText("Game Over", 70, 300);
+      ctx.font = "bold 20px Arial";
+      ctx.fillText("...Press space bar to play again...", 100, 320);
+    }
   }
 
   handleInput(keyPressed){
@@ -129,29 +138,30 @@ class Player{
         case 'right': this.moveRight();break;
         case 'up': this.moveUp();break;
         case 'down': this.moveDown();break;
+        case 'spacebar': this.replay();break;
       }
   }
 
   moveLeft(){
-    if(this.x > LEFT){
+    if(this.x > LEFT && this.life > 0){
       this.x -= 102;
     }
   }
 
   moveRight(){
-    if(this.x  < RIGHT){
+    if(this.x  < RIGHT && this.life > 0){
       this.x += 102;
     }
   }
 
   moveUp(){
-    if(this.y > TOP){ // this cheching is no needed, but just in case
+    if(this.y > TOP && this.life > 0){
       this.y -= 83;
     }
   }
 
   moveDown(){
-    if(this.y < BOTTOM){
+    if(this.y < BOTTOM && this.life > 0){
       this.y += 83;
     }
   }
@@ -171,6 +181,13 @@ class Player{
   decreseLife(){
     this.life--;
   }
+
+  replay(){
+    this.score = 0;
+    this.level = 1;
+    this.life = 3;
+    this.reset();
+  }
 }
 
 // Now instantiate your objects.
@@ -189,7 +206,8 @@ document.addEventListener('keyup', function(e) {
         37: 'left',
         38: 'up',
         39: 'right',
-        40: 'down'
+        40: 'down',
+        32: 'spacebar'
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
