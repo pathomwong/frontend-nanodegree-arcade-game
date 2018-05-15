@@ -116,9 +116,9 @@ class Player{
     ctx.fillText("30", 475, 110);
 
     if(this.goal){
-      ctx.font = "bolder 30px Arial";
-      ctx.fillStyle="#FF0000";
-      ctx.fillText("You Got It, Try Again!", 100, 100);
+      ctx.font = "bolder 25px Arial";
+      ctx.fillStyle="#00ff0d";
+      ctx.fillText("Level "+ this.level, 200, 100);
     }
 
     //Game over
@@ -169,6 +169,7 @@ class Player{
   getGoal(){
     if(this.y <= 0){
       this.goal = true;
+      this.level++;
       this.reset();
     }
   }
@@ -195,7 +196,7 @@ class Player{
 // Place the player object in a variable called player
 const allEnemies = [];
 const player = new Player();
-for(let i=0;i < 6;i++){
+for(let i=0;i < 0;i++){
   allEnemies.push(new Enemy());
 }
 
