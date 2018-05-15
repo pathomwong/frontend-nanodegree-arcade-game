@@ -4,9 +4,38 @@
     <meta charset="UTF-8">
     <title>Effective JavaScript: Frogger</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
 <body>
-    <!-- <div id='gameinfo'>game info</div> -->
+    <div id='gameinfo'>
+      <div id='header-info'>Game Info</div>
+      <div id='level-info'>
+        <div class='topic-info'>Level</div>
+        <div id='level'>1</div>
+      </div>
+      <div id='life-info'>
+        <div class='topic-info'>Life</div>
+        <div id='life'>
+          <i class="fas fa-heart" id='life1'></i>
+          <i class="fas fa-heart" id='life2'></i>
+          <i class="fas fa-heart" id='life3'></i>
+        </div>
+      </div>
+      <div id='gem-info'>
+        <div class='gem-point-info'>
+          <div class='topic-info'><img src="images/Gem Orange.png" alt="Gem Orange"></div>
+          <div class='gem-score'>10 Points</div>
+        </div>
+        <div class='gem-point-info'>
+          <div class='topic-info'><img src="images/Gem Green.png" alt="Gem Green"></div>
+          <div class='gem-score'>20 Points</div>
+        </div>
+        <div class='gem-point-info'>
+          <div class='topic-info'><img src="images/Gem Blue.png" alt="Gem Blue"></div>
+          <div class='gem-score'>30 Points</div>
+        </div>
+      </div>
+    </div>
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
