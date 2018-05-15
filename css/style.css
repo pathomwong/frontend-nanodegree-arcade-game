@@ -3,7 +3,7 @@ body {
     overflow: hidden;
 }
 
-#gameinfo{
+#game-info{
   position: absolute;
   float: left;
   border: 3px solid;
@@ -66,4 +66,19 @@ body {
   height: 3em;
   width: 50%;
   font-weight: bolder;
+}
+
+#score-info{
+  position: absolute;
+  float: left;
+  border: 3px solid;
+  height: 80%;
+  width: 25%;
+  margin: 3em 57em;
+  border-radius: 5%;
+}
+
+#score-header, #score{
+  margin-top: 0.5em;
+  font-size: 2.5em;
 }
