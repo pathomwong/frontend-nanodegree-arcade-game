@@ -174,6 +174,8 @@ class Player{
     if(this.y <= 0){
       this.goal = true;
       this.level++;
+      gems.length = 0;
+      generateGem();
       this.reset();
     }
   }
@@ -183,8 +185,6 @@ class Player{
     this.y = 390;
     allEnemies.length = 0;
     generateEnemy(this.level);
-    gems.length = 0;
-    generateGem();
   }
 
   decreseLife(){
@@ -195,6 +195,8 @@ class Player{
     this.score = 0;
     this.level = 1;
     this.life = 3;
+    gems.length = 0;
+    generateGem();
     this.reset();
   }
 }
