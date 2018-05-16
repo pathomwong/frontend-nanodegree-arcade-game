@@ -204,9 +204,6 @@ class Gem{
   render(){
     if(this.show){
      ctx.drawImage(Resources.get(this.sprite), this.x, this.y, this.width, this.height);
-     //ctx.fillText("+", this.x, this.y);
-     //ctx.fillText((this.y - player.y ), this.x - 60, this.y);
-     //ctx.fillText((this.x - player.x), this.x - 60, this.y + 25);
     }
   }
 
@@ -220,12 +217,17 @@ class Gem{
       this.show = false;
     }
   }
+
+  randomXPosition(initX){
+    console.log(((Math.floor(Math.random() * 4)+1)*100) + initX);
+    return ((Math.floor(Math.random() * 4)+1)*100) + initX;
+  }
 }
 
 class BlueGem extends Gem{
-    constructor(x){
+    constructor(){
       super('images/Gem Blue.png', 30, 40, 60);
-      this.x = x;
+      this.x = this.randomXPosition(30);
       this.y = 135;
     }
 
@@ -235,9 +237,9 @@ class BlueGem extends Gem{
 }
 
 class GreenGem extends Gem{
-    constructor(x){
+    constructor(){
       super('images/Gem Green.png', 20, 40, 60);
-      this.x = x;
+      this.x = this.randomXPosition(30);
       this.y = 215;
     }
 
@@ -247,9 +249,9 @@ class GreenGem extends Gem{
 }
 
 class OrangeGem extends Gem{
-    constructor(x){//107,177
+    constructor(){
       super('images/Gem Orange.png', 10, 90, 120);
-      this.x = x;
+      this.x = this.randomXPosition(5);
       this.y = 264;
     }
 
@@ -261,12 +263,7 @@ class OrangeGem extends Gem{
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 const allEnemies = [];
-const gems = [new BlueGem(30),new GreenGem(30),new OrangeGem(5)
-  ,new BlueGem(130),new GreenGem(130),new OrangeGem(105)
-  ,new BlueGem(230),new GreenGem(230),new OrangeGem(205)
-  ,new BlueGem(330),new GreenGem(330),new OrangeGem(305)
-   ,new BlueGem(430),new GreenGem(430),new OrangeGem(405)
-];
+const gems = [new BlueGem(),new GreenGem(),new OrangeGem()];
 
 const player = new Player();
 for(let i=0;i < 0;i++){
