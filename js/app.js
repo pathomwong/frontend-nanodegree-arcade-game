@@ -1,9 +1,11 @@
+//Constant Variables
 const LEFT = 0;
 const	TOP = 20;
 const	RIGHT = 390;
 const	BOTTOM = 390;
 const ENEMY_START_Y = [60,145,225];
 const ENEMY_MAX_SPEED = 300;
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
@@ -109,7 +111,6 @@ class Player{
     }
 
     //gem information
-
     ctx.drawImage(Resources.get("images/Gem Orange.png"), 330, 84, 20, 30);
     ctx.fillText("10", 355, 110);
     ctx.drawImage(Resources.get("images/Gem Green.png"), 390, 84, 20, 30);
@@ -117,6 +118,7 @@ class Player{
     ctx.drawImage(Resources.get("images/Gem Blue.png"), 450, 84, 20, 30);
     ctx.fillText("30", 475, 110);
 
+    //Level Up, when get goal
     if(this.goal){
       ctx.font = "bolder 25px Arial";
       ctx.fillStyle="#00ff0d";
@@ -172,10 +174,6 @@ class Player{
     if(this.y <= 0){
       this.goal = true;
       this.level++;
-      allEnemies.length = 0;
-      generateEnemy(this.level);
-      gems.length = 0;
-      generateGem();
       this.reset();
     }
   }
@@ -183,6 +181,10 @@ class Player{
   reset(){
     this.x = 0;
     this.y = 390;
+    allEnemies.length = 0;
+    generateEnemy(this.level);
+    gems.length = 0;
+    generateGem();
   }
 
   decreseLife(){
@@ -193,10 +195,6 @@ class Player{
     this.score = 0;
     this.level = 1;
     this.life = 3;
-    allEnemies.length = 0;
-    generateEnemy(this.level);
-    gems.length = 0;
-    generateGem();
     this.reset();
   }
 }

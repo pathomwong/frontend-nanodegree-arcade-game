@@ -17,7 +17,13 @@ Classic Arcade Game Clone is browser-based game for Front End Udacity Nanodegree
   This Game is a web-base game, Installation is not needed, just open index.html with your browser.
 
 ## <a name="howtoplay"></a>How to Play the Game
-  In this game you have a Player and Enemies (Bugs). The goal of the player is to reach the water, without colliding into any one of the enemies. The player can move left, right, up and down(Using arrow on the keyboard). The enemies move in varying speeds on the paved block portion of the scene. Once a the player collides with an enemy, the game is reset and the player moves back to the start square. Once the player reaches the water the game is won.
+  In this game you have a Player and Enemies (Bugs). The goal of the player is to reach the water, without colliding into any one of the enemies.
+
+  * Use arrow key to move character around
+  * Collect Gem to get score
+  * reach the water block to get to the next Level
+  * Life will be decreased when hit the Bugs
+  * If life is zero, Game over
 
   [Source](https://classroom.udacity.com/nanodegrees/nd001/parts/c02fda3b-67bf-48d6-a64f-c6960e2d4d79/modules/269645859775463/lessons/2696458597239847/concepts/59a9fe1d-cab4-4256-8479-4550ce4f4cfd)
 
