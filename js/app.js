@@ -80,7 +80,8 @@ class Player{
   }
 
   update(){
-      this.getGoal();
+    //check goal
+    this.getGoal();
   }
 
   render(){
@@ -171,6 +172,10 @@ class Player{
     if(this.y <= 0){
       this.goal = true;
       this.level++;
+      allEnemies.length = 0;
+      generateEnemy(this.level);
+      gems.length = 0;
+      generateGem();
       this.reset();
     }
   }
@@ -188,6 +193,10 @@ class Player{
     this.score = 0;
     this.level = 1;
     this.life = 3;
+    allEnemies.length = 0;
+    generateEnemy(this.level);
+    gems.length = 0;
+    generateGem();
     this.reset();
   }
 }
@@ -218,7 +227,7 @@ class Gem{
     }
   }
 
-  randomXPosition(initX){
+  static randomXPosition(initX){
     console.log(((Math.floor(Math.random() * 4)+1)*100) + initX);
     return ((Math.floor(Math.random() * 4)+1)*100) + initX;
   }
@@ -227,7 +236,7 @@ class Gem{
 class BlueGem extends Gem{
     constructor(){
       super('images/Gem Blue.png', 30, 40, 60);
-      this.x = this.randomXPosition(30);
+      this.x = Gem.randomXPosition(30);
       this.y = 135;
     }
 
@@ -239,7 +248,7 @@ class BlueGem extends Gem{
 class GreenGem extends Gem{
     constructor(){
       super('images/Gem Green.png', 20, 40, 60);
-      this.x = this.randomXPosition(30);
+      this.x = Gem.randomXPosition(30);
       this.y = 215;
     }
 
@@ -251,7 +260,7 @@ class GreenGem extends Gem{
 class OrangeGem extends Gem{
     constructor(){
       super('images/Gem Orange.png', 10, 90, 120);
-      this.x = this.randomXPosition(5);
+      this.x = Gem.randomXPosition(5);
       this.y = 264;
     }
 
@@ -263,11 +272,21 @@ class OrangeGem extends Gem{
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 const allEnemies = [];
-const gems = [new BlueGem(),new GreenGem(),new OrangeGem()];
-
+generateEnemy(1);
+const gems = [];
+generateGem();
 const player = new Player();
-for(let i=0;i < 0;i++){
-  allEnemies.push(new Enemy());
+
+function generateGem(){
+    gems.push(new BlueGem());
+    gems.push(new GreenGem());
+    gems.push(new OrangeGem());
+}
+
+function generateEnemy(level){
+  for(let i=0;i < (level + 2);i++){
+    allEnemies.push(new Enemy());
+  }
 }
 
 // This listens for key presses and sends the keys to your
