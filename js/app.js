@@ -85,6 +85,7 @@ class Player{
 
   render(){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    //ctx.fillText("+", this.x+4, this.y+36);
 
     //score
     ctx.font = "bold 20px Arial";
@@ -191,10 +192,82 @@ class Player{
   }
 }
 
+class Gem{
+  constructor(sprite, score, width, height){
+    this.sprite = sprite;
+    this.score = score;
+    this.width = width;
+    this.height = height;
+    this.show = true;
+  }
+
+  render(){
+    if(this.show){
+     ctx.drawImage(Resources.get(this.sprite), this.x, this.y, this.width, this.height);
+     //ctx.fillText("+", this.x, this.y);
+     //ctx.fillText((this.y - player.y ), this.x - 60, this.y);
+     //ctx.fillText((this.x - player.x), this.x - 60, this.y + 25);
+    }
+  }
+
+  checkCollisions(xOffset,yOffset){
+    if((this.x - (player.x + xOffset)) <= 10 && (this.x - (player.x + xOffset)) >= -10 &&
+       (this.y - (player.y + yOffset)) <= 10 && (this.y - (player.y + yOffset)) >= -10){
+      console.log('collision');
+      if(this.show === true){
+        player.score += this.score;
+      }
+      this.show = false;
+    }
+  }
+}
+
+class BlueGem extends Gem{
+    constructor(x){
+      super('images/Gem Blue.png', 30, 40, 60);
+      this.x = x;
+      this.y = 135;
+    }
+
+    update(){
+      this.checkCollisions(28,74);
+    }
+}
+
+class GreenGem extends Gem{
+    constructor(x){
+      super('images/Gem Green.png', 20, 40, 60);
+      this.x = x;
+      this.y = 215;
+    }
+
+    update(){
+      this.checkCollisions(28,74);
+    }
+}
+
+class OrangeGem extends Gem{
+    constructor(x){//107,177
+      super('images/Gem Orange.png', 10, 90, 120);
+      this.x = x;
+      this.y = 264;
+    }
+
+    update(){
+      this.checkCollisions(4,36);
+    }
+}
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 const allEnemies = [];
+const gems = [new BlueGem(30),new GreenGem(30),new OrangeGem(5)
+  ,new BlueGem(130),new GreenGem(130),new OrangeGem(105)
+  ,new BlueGem(230),new GreenGem(230),new OrangeGem(205)
+  ,new BlueGem(330),new GreenGem(330),new OrangeGem(305)
+   ,new BlueGem(430),new GreenGem(430),new OrangeGem(405)
+];
+
 const player = new Player();
 for(let i=0;i < 0;i++){
   allEnemies.push(new Enemy());
